@@ -64,17 +64,17 @@ plugins: [
         ) === 0
         )
     }
-    }),
+  }),
   new webpack.optimize.CommonsChunkPlugin({
     name: 'manifest',
     minChunks: Infinity
-    }),
+  }),
   new webpack.optimize.CommonsChunkPlugin({
     name: 'app',
     async: 'vendor-async',
     children: true,
     minChunks: 3
-    }),
+  }),
   // keep module.id stable when vendor modules does not change
   new webpack.HashedModuleIdsPlugin(),
   new EsayHtmlWebpackPlugin({
