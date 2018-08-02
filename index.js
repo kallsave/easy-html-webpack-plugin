@@ -26,7 +26,7 @@ class HtmlPlugin {
 
   apply(compiler) {
     compiler.plugin('emit', (compilation, next) => {
-        
+
       let allChunks = compilation.getStats().toJson().chunks;
 
       let chunks = this.dependency(allChunks).reverse();
@@ -48,7 +48,7 @@ class HtmlPlugin {
             chunkFile = this.appendHash(chunkFile, chunkHash);
           }
 
-          if (typeof this.options.chunkFn === 'function') {
+          if (typeof this.options.chunkPipe === 'function') {
             chunkFile = this.options.chunkPipe(chunkFile);
           }
 

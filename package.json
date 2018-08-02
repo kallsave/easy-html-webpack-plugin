@@ -1,24 +1,27 @@
 {
-  "name": "simple-html-webpack-plugin",
+  "name": "easy-html-webpack-plugin",
   "version": "0.0.1",
-  "description": "a simple and flexible plugin for webpack to injecting js and css into html",
+  "description": "a easy and flexible plugin for webpack to injecting js and css into html",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kallsave/simple-html-webpack-plugin.git"
+    "url": "git+https://github.com/kallsave/easy-html-webpack-plugin.git"
   },
   "keywords": [
-    "webpack-html-plugin",
+    "easy-webpack-html-plugin",
     "hash",
     "chunkPipe"
   ],
   "author": "kallsave",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/kallsave/simple-html-webpack-plugin/issues"
+    "url": "https://github.com/kallsave/easy-html-webpack-plugin/issues"
   },
-  "homepage": "https://github.com/kallsave/simple-html-webpack-plugin#readme"
+  "homepage": "https://github.com/kallsave/easy-html-webpack-plugin#readme",
+  "dependencies": {
+    "toposort": "^2.0.2"
+  }
 }
