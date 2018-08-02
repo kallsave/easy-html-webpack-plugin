@@ -19,7 +19,7 @@ After webpack compilation:
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>vue-music-learn</title>
+    <title>Document</title>
   <link rel="stylesheet" href="./static/css/app.css?fe8f1871392175ffe592" /></head>
   <body>
     <div id="app"></div>
