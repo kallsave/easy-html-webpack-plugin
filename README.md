@@ -15,17 +15,17 @@ But can dependen on [webpack.HashedModuleIdsPlugin](https://github.com/webpack/w
 After webpack compilation:
 ```javascript
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head><link rel="stylesheet" href="./static/css/app.css?5988cfb44ce28a92b61d" />
-<body>
-  <div id="app"></div>
-</body><script src="./static/js/manifest.js?8031c6b28b40ad59a31e"></script><script src="./static/js/vendor.js?353bb65c911ef49e0804"></script><script src="./static/js/app.js?5988cfb44ce28a92b61d"></script>
-</html> 
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>vue-music-learn</title>
+  <link rel="stylesheet" href="./static/css/app.css?fe8f1871392175ffe592" /></head>
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body><script src="./static/js/manifest.js?8031c6b28b40ad59a31e"></script><script src="./static/js/vendor.js?bd0ae558bdc3f0975439"></script><script src="./static/js/app.js?fe8f1871392175ffe592"></script>
+</html>
 ```
 
 Installation

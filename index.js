@@ -77,7 +77,7 @@ class HtmlPlugin {
       }
       if (chunkFile.indexOf('.css') !== -1 && chunkFile.indexOf('.map') === -1) {
         let str = `<link rel="stylesheet" href="${chunkFile}" />`
-        this.html = this.html.replace(/<\/head>/, `$&${str}`);
+        this.html = this.html.replace(/<\/head>/, `${str}$&`);
       }
     })
   }

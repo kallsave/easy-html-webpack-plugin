@@ -1,6 +1,6 @@
 {
   "name": "easy-html-webpack-plugin",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "a easy and flexible plugin for webpack to injecting js and css into html",
   "main": "index.js",
   "scripts": {
