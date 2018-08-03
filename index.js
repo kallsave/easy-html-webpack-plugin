@@ -9,7 +9,7 @@ class HtmlPlugin {
       inject: true,
       filename: '',
       template: '',
-      public: '',
+      publicPath: '',
       hash: false,
       chunkPipe: undefined
     }, options);
@@ -40,8 +40,8 @@ class HtmlPlugin {
 
         chunkFiles = chunkFiles.map((chunkFile) =>{
 
-          if (typeof this.options.public === 'string') {
-            chunkFile = this.options.public + chunkFile;
+          if (typeof this.options.publicPath === 'string') {
+            chunkFile = this.options.publicPath + chunkFile;
           }
 
           if (this.options.hash) {

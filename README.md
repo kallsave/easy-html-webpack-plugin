@@ -3,7 +3,7 @@ Easy HTML Webpack Plugin
 
 Add a JavaScript or CSS asset to the HTML generate
 
-[![npm](https://img.shields.io/npm/v/easy-html-webpack-plugin.svg?style=flat-square)](https://www.npmjs.com/package/easy-html-webpack-plugin) 
+[![npm](https://img.shields.io/npm/v/easy-html-webpack-plugin.svg?style=flat-square)](https://www.npmjs.com/package/easy-html-webpack-plugin)
 
 Features
 ------------
@@ -42,11 +42,11 @@ Basic Usage
 Require the plugin in your webpack config:
 
 ```javascript
-const EsayHtmlWebpackPlugin = require('esay-html-webpack-plugin');
+const EsayHtmlWebpackPlugin = require('esay-html-webpack-plugin')
 ```
 
 Add the plugin to your webpack config as follows:
-[Project structure](https://github.com/kallsave/easy-html-webpack-plugin/tree/master/demo/simple-demo) please look at [follow dome](https://github.com/kallsave/easy-html-webpack-plugin/tree/master/demo/simple-demo) or vue-cli 2:
+[Project structure](https://github.com/kallsave/easy-html-webpack-plugin/tree/master/demo/simple-demo) please look at [follow dome](https://github.com/kallsave/easy-html-webpack-plugin/tree/master/demo/simple-demo)
 
 [simple-demo](https://github.com/kallsave/easy-html-webpack-plugin/tree/master/demo/simple-demo)
 
@@ -95,32 +95,52 @@ plugins: [
       return chunkFile
     }
   }),
-]  
+]
 ```
 
-When you want to change some special chunkfiles'path, you can use  chunkPipe methods:
+When you want to change some special chunkfiles'path, you can use  chunkPipe methods.
+For example, you can change the hash suffix of chunkfiles to timestamp hash
 ```javascript
 plugins: [
   ...
-  new EsayHtmlWebpackPlugin({
+  new HtmlPlugin({
     inject: true,
-    // filename absolute path
     filename: path.resolve(__dirname, '../dist/index.html'),
-    // template absolute path
     template: path.resolve(__dirname, '../index.html'),
-    // add hash to chunkFile and keep hash stable when vendor modules does not change
     hash: true,
-    // Prefix of injected file
     public: './',
     chunkPipe(chunkFile) {
-      // if chunk is app, do some special processing
-      if (chunkFile.indexOf('app') !== -1) {
-        return './' + chunkFile
+      // vendor chunkFile are integrated with relatively large third-party libraries and need to be cached
+      // we do not recommend customizing hash timestamps for vendor chunkFile
+      if (chunkFile.indexOf('vendor') !== -1) {
+        return chunkFile
+      } else {
+        // you can change the hash suffix of other files to timestamp hash
+        let time = new Date()
+        let year = time.getFullYear()
+        let month = time.getMonth() + 1
+        month = month > 9 ? month : `0${month}`
+        let date = time.getDate()
+        date =  date > 9 ? date : `0${date}`
+        return chunkFile.replace(/(\?.*)/, `?${year}${month}${date}`)
       }
-      return chunkFile
     }
   }),
-]  
+]
 ```
+
+Used in vue-cli-2 scaffolding:
+------------
+####[vue-cli-2-demo](https://github.com/kallsave/easy-html-webpack-plugin/tree/master/demo/vue-cli-2-demo)
+
+
+
+
+
+
+
+
+
+
 
 

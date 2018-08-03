@@ -4,7 +4,8 @@
   "description": "webpack html-webpack-plugin",
   "main": "src/main.js",
   "scripts": {
-    "build": "webpack --config build/webpack.config.js"
+    "build": "webpack --config build/webpack.config.js",
+    "dev": "webpack-dev-server --inline --progress --config build/webpack.config.js"
   },
   "keywords": [
     "demo"

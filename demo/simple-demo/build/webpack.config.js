@@ -76,6 +76,9 @@ module.exports = {
     ]
   },
   plugins: [
+
+    new webpack.HotModuleReplacementPlugin(),
+
     new ExtractTextWebpackPlugin({
       filename: assetsPath('css/[name].css'),
       // Setting the following option to `false` will not extract CSS from codesplit chunks.
@@ -138,6 +141,22 @@ module.exports = {
         return chunkFile
       }
     }),
-
-  ]
+  ],
+  devtool: 'cheap-module-eval-source-map',
+  devServer: {
+    clientLogLevel: 'warning',
+    contentBase: resolve('dist'),
+    hot: true,
+    compress: true,
+    host: 'localhost',
+    port: 8082,
+    open: true,
+    overlay: { warnings: false, errors: true },
+    publicPath: '/',
+    proxy: {},
+    quiet: true,
+    watchOptions: {
+      poll: false,
+    }
+  },
 }
