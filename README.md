@@ -86,7 +86,7 @@ plugins: [
     // add hash to chunkFile and keep hash stable when vendor modules does not change
     hash: true,
     // Prefix of injected file
-    public: './',
+    publicPath: './',
     chunkPipe(chunkFile) {
       // if chunk is app, do some special processing
       if (chunkFile.indexOf('app') !== -1) {

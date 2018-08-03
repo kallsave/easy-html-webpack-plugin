@@ -98,7 +98,6 @@ const webpackConfig = merge(baseWebpackConfig, {
       filename: path.resolve(__dirname, '../dist/index.html'),
       template: path.resolve(__dirname, '../index.html'),
       hash: true,
-      public: config.build.assetsPublicPath,
       publicPath: config.build.assetsPublicPath
     }),
 
