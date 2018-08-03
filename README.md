@@ -108,7 +108,7 @@ plugins: [
     filename: path.resolve(__dirname, '../dist/index.html'),
     template: path.resolve(__dirname, '../index.html'),
     hash: true,
-    public: './',
+    publicPath: './',
     chunkPipe(chunkFile) {
       // vendor chunkFile are integrated with relatively large third-party libraries and need to be cached
       // we do not recommend customizing hash timestamps for vendor chunkFile
