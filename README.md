@@ -56,13 +56,13 @@ plugins: [
   new webpack.optimize.CommonsChunkPlugin({
     name: 'vendor',
     minChunks (module) {
-        return (
+      return (
         module.resource &&
         /\.js$/.test(module.resource) &&
         module.resource.indexOf(
             path.join(__dirname, '../node_modules')
         ) === 0
-        )
+      )
     }
   }),
   new webpack.optimize.CommonsChunkPlugin({
@@ -87,13 +87,6 @@ plugins: [
     hash: true,
     // Prefix of injected file
     publicPath: './',
-    chunkPipe(chunkFile) {
-      // if chunk is app, do some special processing
-      if (chunkFile.indexOf('app') !== -1) {
-        return './' + chunkFile
-      }
-      return chunkFile
-    }
   }),
 ]
 ```
@@ -131,7 +124,7 @@ plugins: [
 
 Used in vue-cli-2 scaffolding:
 ------------
-####[vue-cli-2-demo](https://github.com/kallsave/easy-html-webpack-plugin/tree/master/demo/vue-cli-2-demo)
+[vue-cli-2-demo](https://github.com/kallsave/easy-html-webpack-plugin/tree/master/demo/vue-cli-2-demo)
 
 
 
