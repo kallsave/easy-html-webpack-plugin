@@ -1,7 +1,7 @@
 Easy HTML Webpack Plugin
 ========================================
 
-A webpack plugin that automatically adds js and css files and their suffixes to html
+A webpack plugin that automatically injects js and css files with their suffixes into html
 
 [![npm](https://img.shields.io/npm/v/easy-html-webpack-plugin.svg?style=flat-square)](https://www.npmjs.com/package/easy-html-webpack-plugin)
 
@@ -11,6 +11,8 @@ Features
 Does not produce a different hash suffix js or css files each time after webpack compilation
 
 But can dependen on [webpack.HashedModuleIdsPlugin](https://github.com/webpack/webpack/blob/master/lib/HashedModuleIdsPlugin.js) to keep module.id stable when vendor modules does not change
+
+It could make your server  reduce duplicate files (different hash values for the same file) and cache the third-party code(vendor.js) in browser
 
 After webpack compilation:
 ```javascript
@@ -89,7 +91,7 @@ plugins: [
 ]
 ```
 
-When you want to change some special chunkfiles'path, you can use  chunkPipe methods.
+When you want to change some special chunkfiles'path or want to use custom hash, you can use  chunkPipe methods.
 For example, you can change the hash suffix of the chunkfiles to a timestamp
 ```javascript
 plugins: [

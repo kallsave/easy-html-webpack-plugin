@@ -1,18 +1,21 @@
 module.exports = {
   root: true,
   parserOptions: {
-    "ecmaVersion": 6,
+    'ecmaVersion': 6,
   },
   env: {
-    "node": true,
-    "commonjs": true,
+    'node': true,
+    'commonjs': true,
   },
+  plugins: [
+    'html'
+  ],
   extends: [
     'standard'
   ],
   rules: {
     'arrow-parens': 'off',
-    "comma-dangle": ["off"],
+    'comma-dangle': ['off'],
     'eol-last': 'off',
     'generator-star-spacing': 'off',
     'space-before-function-paren': 'off',
