@@ -5,13 +5,15 @@
 > In Vue-cli-2, [html-webpack-plugin](https://github.com/jantimon/html-webpack-plugin) has more advantages for webpack-dev-server, this plugin was created to extend [html-webpack-plugin's]((https://github.com/jantimon/html-webpack-plugin)) injection capabilities In the production environment. In the development environment for Vue-cli, please use [html-webpack-plugin](https://github.com/jantimon/html-webpack-plugin)
 
 
-##1.Install the plugin with npm:
+1.Install the plugin with npm:
+------------
 ```shell
 $ npm install --save-dev esay-html-webpack-plugin
 ```
 
 
-##2.Modify config/index.js to config your assetsPublicPath
+2.Modify config/index.js to config your assetsPublicPath
+------------
 ```javascript
 dev: {
   ...
@@ -27,7 +29,8 @@ build: {
 }
 ```
 
-##3.Modify build/webpack.prod.conf.js
+3.Modify build/webpack.prod.conf.js
+------------
 ```javascript
 /** require EsayHtmlWebpackPlugin*/
 const EsayHtmlWebpackPlugin = require('easy-html-webpack-plugin')
@@ -60,10 +63,6 @@ plugins: [
   /** remove filename hash */
   new ExtractTextPlugin({
     filename: utils.assetsPath('css/[name].css'),
-    // Setting the following option to `false` will not extract CSS from codesplit chunks.
-    // Their CSS will instead be inserted dynamically with style-loader when the codesplit chunk has been loaded by webpack.
-    // It's currently set to `true` because we are seeing that sourcemaps are included in the codesplit bundle as well when it's `false`,
-    // increasing file size: https://github.com/vuejs-templates/webpack/issues/1110
     allChunks: true,
   }),
 
@@ -80,7 +79,8 @@ plugins: [
 
 ```
 
-##4.Npm run build
+4.Npm run build
+------------
 ```shell
 $ npm run build
 ```
