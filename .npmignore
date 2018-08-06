@@ -5,3 +5,6 @@ package-lock.json
 .editorconfig
 demo/
 dist/
+.eslintrc.js
+.gitignore
+test/

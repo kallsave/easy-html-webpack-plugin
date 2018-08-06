@@ -1,17 +1,17 @@
 # easy-html-webpack-plugin-vue-cli-demo
 
-> easy-html-webpack-plugin for use in vue-clivue-clitml-webpack-plguin
+## Instructions for using
 
-####In Vue-cli-2, [html-webpack-plugin](https://github.com/jantimon/html-webpack-plugin) has more advantages for webpack-dev-server, this plugin was created to extend [html-webpack-plugin's]((https://github.com/jantimon/html-webpack-plugin)) injection capabilities In the production environment. In the development environment for Vue-cli, use [html-webpack-plugin](https://github.com/jantimon/html-webpack-plugin)
+> In Vue-cli-2, [html-webpack-plugin](https://github.com/jantimon/html-webpack-plugin) has more advantages for webpack-dev-server, this plugin was created to extend [html-webpack-plugin's]((https://github.com/jantimon/html-webpack-plugin)) injection capabilities In the production environment. In the development environment for Vue-cli, please use [html-webpack-plugin](https://github.com/jantimon/html-webpack-plugin)
 
 
-###1.Install the plugin with npm:
+##1.Install the plugin with npm:
 ```shell
 $ npm install --save-dev esay-html-webpack-plugin
 ```
 
 
-###2.Modify config/index.js to config your assetsPublicPath
+##2.Modify config/index.js to config your assetsPublicPath
 ```javascript
 dev: {
   ...
@@ -27,7 +27,7 @@ build: {
 }
 ```
 
-###3.Modify build/webpack.prod.conf.js
+##3.Modify build/webpack.prod.conf.js
 ```javascript
 /** require EsayHtmlWebpackPlugin*/
 const EsayHtmlWebpackPlugin = require('easy-html-webpack-plugin')
@@ -80,7 +80,7 @@ plugins: [
 
 ```
 
-###4.Npm run build
+##4.Npm run build
 ```shell
 $ npm run build
 ```
