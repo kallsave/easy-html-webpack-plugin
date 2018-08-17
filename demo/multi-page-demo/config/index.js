@@ -9,6 +9,6 @@ module.exports = {
   },
   build: {
     publicPath: './',
-    buildDirectors: ['pages/canvas'],
+    buildDirectors: ['pages/canvas', 'pages/tween'],
   }
 }

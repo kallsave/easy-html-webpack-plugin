@@ -14,6 +14,18 @@ class HtmlPlugin {
       chunkPipe: undefined
     }, options)
 
+    fs.stat(this.options.filename, (err, stats) => {
+      if (err) {
+        throw err
+      } else {
+        fs.unlink(this.options.filename, (err) => {
+          if (err) {
+            throw err
+          }
+        })
+      }
+    })
+
     fs.readFile(this.options.template, 'utf8', (err, data) => {
       if (err) {
         throw err

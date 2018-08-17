@@ -145,7 +145,7 @@ Demo of simple use:
 
 Demo of multi-page use:
 ------------
-[simple-demo](https://github.com/kallsave/easy-html-webpack-plugin/tree/master/demo/multi-page-demo)
+[multi-page-demo](https://github.com/kallsave/easy-html-webpack-plugin/tree/master/demo/multi-page-demo)
 
 
 Demo used in vuel-cli2:

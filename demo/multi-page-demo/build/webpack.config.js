@@ -161,6 +161,9 @@ module.exports = function (buildDirector) {
         publicPath: process.env.NODE_ENV === 'development' ? config.dev.publicPath : config.build.publicPath,
         // You can manipulate each injected file here
         chunkPipe(chunkFile) {
+          if (process.env.NODE_ENV === 'development') {
+            return chunkFile
+          }
           if (chunkFile.indexOf('vendor') !== -1) {
             return chunkFile
           } else {

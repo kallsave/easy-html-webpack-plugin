@@ -4,13 +4,30 @@
 $ npm install
 ```
 
-2.npm run dev:
+2.Modify config/index.js to config your project
+------------
+```javascript
+dev: {
+  ...
+  // String, The directories you want to pack this time
+  buildDirector: 'pages/canvas',
+  // your proxy
+  proxy: {}
+  ...
+},
+build: {
+  // Array, The directories you want to pack this time
+  buildDirectors: ['pages/canvas', 'pages/tween'],
+}
+```
+
+3.npm run dev:
 ------------
 ```shell
 $ npm run dev
 ```
 
-3.npm run build:
+4.npm run build:
 ------------
 ```shell
 $ npm run build

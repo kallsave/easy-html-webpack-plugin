@@ -9,7 +9,7 @@ const chalk = require('chalk')
 const spinner = ora('building for production...')
 spinner.start()
 
-// The directories to pack this time
+// The directories you want to pack this time
 let buildDirectors = config.build.buildDirectors
 
 buildDirectors.forEach((buildDirector) => {

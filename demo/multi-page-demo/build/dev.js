@@ -4,7 +4,7 @@ const webpackConfigFn = require('./webpack.config')
 const config = require('../config')
 const portfinder = require('portfinder')
 
-// The directory to be developed this time
+// The directory you want to develop this time
 let buildDirector = config.dev.buildDirector
 
 let webpackConfig = webpackConfigFn(buildDirector)
