@@ -24,7 +24,7 @@ const createLintingRule = () => ({
   include: [resolve('src')],
   options: {
     formatter: require('eslint-friendly-formatter'),
-    emitWarning: !config.dev.showEslintErrorsInOverlay
+    emitWarning: true
   }
 })
 
@@ -85,11 +85,12 @@ module.exports = {
           ]
         })
       },
+      // your need to install url-loader and file-loader
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
         options: {
-          limit: 10000,
+          limit: 1,
           name: assetsPath('img/[name].[hash:7].[ext]')
         }
       },

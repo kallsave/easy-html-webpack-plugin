@@ -6,11 +6,11 @@ const config = require('../config')
 const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-const EsayHtmlWebpackPlugin = require('easy-html-webpack-plugin')
+const EasyHtmlWebpackPlugin = require('easy-html-webpack-plugin')
+// const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const env = require('../config/prod.env')
 
@@ -93,13 +93,28 @@ const webpackConfig = merge(baseWebpackConfig, {
       minChunks: 3
     }),
 
-    new EsayHtmlWebpackPlugin({
+    new EasyHtmlWebpackPlugin({
       inject: true,
       filename: path.resolve(__dirname, '../dist/index.html'),
       template: path.resolve(__dirname, '../index.html'),
       hash: true,
       publicPath: config.build.assetsPublicPath
     }),
+
+    // new HtmlWebpackPlugin({
+    //   filename: config.build.index,
+    //   template: 'index.html',
+    //   inject: true,
+    //   minify: {
+    //     removeComments: true,
+    //     collapseWhitespace: true,
+    //     removeAttributeQuotes: true
+    //   // more options:
+    //   // https://github.com/kangax/html-minifier#options-quick-reference
+    //   },
+    //   // necessary to consistently work with multiple chunks via CommonsChunkPlugin
+    //   chunksSortMode: 'dependency'
+    // }),
 
     // copy custom static assets
     new CopyWebpackPlugin([

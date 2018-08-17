@@ -33,7 +33,7 @@ build: {
 ------------
 ```javascript
 /** require EsayHtmlWebpackPlugin*/
-const EsayHtmlWebpackPlugin = require('easy-html-webpack-plugin')
+const EasyHtmlWebpackPlugin = require('easy-html-webpack-plugin')
 ...
 
 /** remove filename hash */
@@ -67,7 +67,7 @@ plugins: [
   }),
 
   /** config EasyHtmlWebpackPlugin */
-  new EsayHtmlWebpackPlugin({
+  new EasyHtmlWebpackPlugin({
     inject: true,
     filename: path.resolve(__dirname, '../dist/index.html'),
     template: path.resolve(__dirname, '../index.html'),
