@@ -3,6 +3,15 @@ const fs = require('fs')
 const path = require('path')
 const toposort = require('toposort')
 
+function fsExistsSync(path) {
+  try {
+    fs.accessSync(path, fs.F_OK)
+  } catch (e) {
+    return false
+  }
+  return true
+}
+
 class HtmlPlugin {
   constructor(options) {
     this.options = Object.assign({
@@ -14,17 +23,13 @@ class HtmlPlugin {
       chunkPipe: undefined
     }, options)
 
-    fs.stat(this.options.filename, (err, stats) => {
-      if (err) {
-        throw err
-      } else {
-        fs.unlink(this.options.filename, (err) => {
-          if (err) {
-            throw err
-          }
-        })
-      }
-    })
+    if (fsExistsSync(this.options.filename)) {
+      fs.unlink(this.options.filename, (err) => {
+        if (err) {
+          throw err
+        }
+      })
+    }
 
     fs.readFile(this.options.template, 'utf8', (err, data) => {
       if (err) {
