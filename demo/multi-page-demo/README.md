@@ -14,4 +14,3 @@ $ npm run dev
 ------------
 ```shell
 $ npm run build
-```

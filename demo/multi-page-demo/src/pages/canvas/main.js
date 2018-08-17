@@ -9,7 +9,7 @@ console.log(_.defaults({ 'a': 1 }, { 'a': 3, 'b': 2 }))
 
 let img = document.createElement('img')
 
-let imgUrl = require('./assets/images/wallpaper.jpg')
+let imgUrl = require('./images/wallpaper.jpg')
 
 img.setAttribute('src', imgUrl)
 

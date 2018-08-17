@@ -3,16 +3,30 @@ const path = require('path')
 const webpack = require('webpack')
 const EasyHtmlWebpackPlugin = require('easy-html-webpack-plugin')
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin')
+const config = require('../config')
+const utils = require('./utils')
+const HOST = utils.getIPAddress()
+
+const assetsSubDirectory = 'static'
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
 
-let assetsSubDirectory = 'static'
-
 function assetsPath(_path) {
   return path.posix.join(assetsSubDirectory, _path)
 }
+
+const createLintingRule = () => ({
+  test: /\.(js)$/,
+  loader: 'eslint-loader',
+  enforce: 'pre',
+  include: [resolve('src')],
+  options: {
+    formatter: require('eslint-friendly-formatter'),
+    emitWarning: !config.dev.showEslintErrorsInOverlay
+  }
+})
 
 module.exports = {
   entry: {
@@ -21,10 +35,16 @@ module.exports = {
   output: {
     path: resolve('dist'),
     filename: assetsPath('js/[name].js'),
-    publicPath: './'
+  },
+  resolve: {
+    extensions: ['.js', ' '],
+    alias: {
+      '@': resolve('src'),
+    }
   },
   module: {
     rules: [
+      ...(config.dev.useEslint && process.env.NODE_ENV === 'development' ? [createLintingRule()] : []),
       {
         test: /\.js$/,
         loader: 'babel-loader',
@@ -131,14 +151,21 @@ module.exports = {
       // add hash to chunkFile and keep hash stable when vendor modules does not change
       hash: true,
       // Prefix of injected file
-      publicPath: './',
+      publicPath: process.env.NODE_ENV === 'development' ? config.dev.publicPath : config.build.publicPath,
       // You can manipulate each injected file here
       chunkPipe(chunkFile) {
-        // if chunk is app, do some special processing
-        if (chunkFile.indexOf('app') !== -1) {
-          return './' + chunkFile
+        if (chunkFile.indexOf('vendor') !== -1) {
+          return chunkFile
+        } else {
+          // change the hash suffix of the chunkfile to a timestamp
+          let time = new Date()
+          let year = time.getFullYear()
+          let month = time.getMonth() + 1
+          month = month > 9 ? month : `0${month}`
+          let date = time.getDate()
+          date = date > 9 ? date : `0${date}`
+          return chunkFile.replace(/(\?.*)/, `?${year}${month}${date}`)
         }
-        return chunkFile
       }
     }),
   ],
@@ -148,8 +175,8 @@ module.exports = {
     contentBase: resolve('dist'),
     hot: true,
     compress: true,
-    host: 'localhost',
-    port: 8082,
+    host: HOST || config.dev.host,
+    port: config.dev.port,
     open: true,
     overlay: { warnings: false, errors: true },
     publicPath: '/',
