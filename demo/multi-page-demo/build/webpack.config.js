@@ -2,6 +2,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const EasyHtmlWebpackPlugin = require('easy-html-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin')
 const config = require('../config')
 const utils = require('./utils')
@@ -149,35 +150,40 @@ module.exports = function (buildDirector) {
         minChunks: 3
       }),
 
-      new EasyHtmlWebpackPlugin({
-        inject: true,
-        // filename absolute path
-        filename: path.resolve(__dirname, `../dist/${buildDirector}/index.html`),
-        // template absolute path
-        template: path.resolve(__dirname, `../src/${buildDirector}/index.html`),
-        // add hash to chunkFile and keep hash stable when vendor modules does not change
-        hash: true,
-        // Prefix of injected file
-        publicPath: process.env.NODE_ENV === 'development' ? config.dev.publicPath : config.build.publicPath,
-        // You can manipulate each injected file here
-        chunkPipe(chunkFile) {
-          if (process.env.NODE_ENV === 'development') {
-            return chunkFile
-          }
-          if (chunkFile.indexOf('vendor') !== -1) {
-            return chunkFile
-          } else {
-            // change the hash suffix of the chunkfile to a timestamp
-            let time = new Date()
-            let year = time.getFullYear()
-            let month = time.getMonth() + 1
-            month = month > 9 ? month : `0${month}`
-            let date = time.getDate()
-            date = date > 9 ? date : `0${date}`
-            return chunkFile.replace(/(\?.*)/, `?${year}${month}${date}`)
-          }
-        }
-      })
+      (function () {
+        return process.env.NODE_ENV === 'development'
+          ? new HtmlWebpackPlugin({
+            filename: 'index.html',
+            template: path.resolve(__dirname, `../src/${buildDirector}/index.html`),
+            inject: true,
+          })
+          : new EasyHtmlWebpackPlugin({
+            inject: true,
+            // filename absolute path
+            filename: path.resolve(__dirname, `../dist/${buildDirector}/index.html`),
+            // template absolute path
+            template: path.resolve(__dirname, `../src/${buildDirector}/index.html`),
+            // add hash to chunkFile and keep hash stable when vendor modules does not change
+            hash: true,
+            // Prefix of injected file
+            publicPath: config.build.publicPath,
+            // You can manipulate each injected file here
+            chunkPipe(chunkFile) {
+              if (chunkFile.indexOf('vendor') !== -1) {
+                return chunkFile
+              } else {
+                // change the hash suffix of the chunkfile to a timestamp
+                let time = new Date()
+                let year = time.getFullYear()
+                let month = time.getMonth() + 1
+                month = month > 9 ? month : `0${month}`
+                let date = time.getDate()
+                date = date > 9 ? date : `0${date}`
+                return chunkFile.replace(/(\?.*)/, `?${year}${month}${date}`)
+              }
+            }
+          })
+      })(),
     ],
     devtool: 'cheap-module-eval-source-map',
     devServer: {
